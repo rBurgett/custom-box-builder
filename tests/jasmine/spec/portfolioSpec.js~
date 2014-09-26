@@ -1,0 +1,30 @@
+describe("Portfolio Object", function() {
+    var portfolio;
+    beforeEach(function() {
+        portfolio = Portfolio.create({
+            user : "rashada",
+            key : "J3KRAOIlMgfxT3HegvXl7lhJw1SqmfrY"
+        });
+    });
+
+    it("Should have a url", function() {
+        expect(portfolio.url()).toBeTruthy();
+    });
+    it("Should have a user", function() {
+        expect(portfolio.user()).toEqual("rashada");
+    });
+    it("Should have a key", function() {
+        expect(portfolio.key()).toEqual("testKey");
+    });
+    it("Should have a portfolio API url", function() {
+        expect(portfolio.portfolioAPIurl()).toBeTruthy();
+    });
+    it("Should have a project API url", function() {
+        expect(portfolio.projectAPIurl()).toBeTruthy();
+    });
+});
+describe("Handlebars", function() {
+    it("Should have a custom 'make' method", function() {
+        expect(Handlebars.make).toBeTruthy();
+    });
+});
