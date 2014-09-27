@@ -45,4 +45,14 @@ describe("boxBuilder object", function() {
             expect(boxBuilder.cardboardWidth()).toEqual(0.125);
         });
     });
+    describe("boxType method", function () {
+        it("should return 'flat' if the smallest dimension is less than 9 and the other dimensions are each more than twice as long as the smallest", function () {
+            boxBuilder = BoxBuilder.create({
+                objectLength : 24,
+                objectWidth : 20,
+                objectHeight : 6,
+            });
+            expect(boxBuilder.boxType()).toBe("flat");
+        });
+    });
 });
