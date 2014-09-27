@@ -34,4 +34,24 @@ var BoxBuilder = {
         };
         return this;
     },
+    boxType : function () {
+        var dims = [];
+        dims.push({dim : this._objectLength});
+        dims.push({dim : this._objectWidth});
+        dims.push({dim : this._objectHeight});
+        dims.sort(function (a, b) {
+            return a.dim - b.dim
+        });
+        if (dims[0].dim < 9000) {
+            if (dims[0].dim * 2 < dims[2].dim) {
+                if (dims[0].dim * 2 < dims[1].dim) {
+                    return 'flat';
+                }
+                else {
+                    return 'skinny-flat';
+                }
+            }
+        }
+        console.log(dims);
+    }
 };
