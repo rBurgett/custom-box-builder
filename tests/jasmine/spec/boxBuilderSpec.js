@@ -54,5 +54,13 @@ describe("boxBuilder object", function() {
             });
             expect(boxBuilder.boxType()).toBe("flat");
         });
+        it("should return 'skinny-flat' if the smallest dimension is less than 9 and one of the other two dimensions is less than twice as long as the smallest dimension", function () {
+            boxBuilder = BoxBuilder.create({
+                objectLength : 24,
+                objectWidth : 10,
+                objectHeight : 6,
+            });
+            expect(boxBuilder.boxType()).toBe("skinny-flat");
+        });
     });
 });
