@@ -46,7 +46,7 @@ describe("boxBuilder object", function() {
         });
     });
     describe("boxType method", function () {
-        it("should return 'flat' if the smallest dimension is less than 9 and the other dimensions are each more than twice as long as the smallest", function () {
+        it("should return 'flat' if the smallest dimension is less than 9 and the other dimensions are each more than twice as long as the smallest dimension", function () {
             boxBuilder = BoxBuilder.create({
                 objectLength : 24,
                 objectWidth : 20,
