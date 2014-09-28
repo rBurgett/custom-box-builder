@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Custom Box Builder</title>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <script type="text/x-handlebars">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    {{#link-to "home"}}<a class="navbar-brand"  style="color:#0288cf;" href="">Custom Box Builder <small>v. 1.0</small></a>{{/link-to}}
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:50px;">
+            {{outlet}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" id="home">
+        <div class="center-box">
+            <h3>Welcome to Custom Box Builder!</h3>
+            <p>This small application will help you create custom boxes for shipping. You just enter the dimensions of the object you want to ship and it will tell you how to cut and construct a box for it. There are optional configurations for if you have a special case. To begin, click the button below. If you have any questions or comments regarding this application, email <a href="mailto:ryan@burgettweb.net">ryan@burgettweb.net</a>. Feel free to also check out this project on <a title="View this project on GitHub!" href="https://github.com/rBurgett/custom-box-builder">GitHub</a>.</p>
+            {{#link-to "begin"}}<button type="button" class="btn btn-primary btn-lg begin-button" center-block">Begin!</button>{{/link-to}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" id="begin">
+        <div class="center-box">
+            <h3>Please enter the object dimensions:</h3>
+            <form>
+                <div class="input-group input-group-lg" style="width:70%;">
+                    <span class="input-group-addon">Length</span>
+                    <input type="text" class="form-control" name="length" placeholder="Enter the length in inches">
+                </div>
+                <div class="input-group input-group-lg" style="width:70%;">
+                    <span class="input-group-addon">Width</span>
+                    <input type="text" class="form-control" name="width" placeholder="Enter the width in inches">
+                </div>
+                <div class="input-group input-group-lg" style="width:70%;">
+                    <span class="input-group-addon">Height</span>
+                    <input type="text" class="form-control" name="height" placeholder="Enter the height in inches">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="foam-corners" value="true" checked> Use foam corners 
+                        <a href="#" data-toggle="modal" data-target="#foam-corner-options" title="Click here to change the foam corner size">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                    </label>
+                </div>
+            </form>
+            <button type="button" class="btn btn-primary btn-lg submit-button" center-block">Submit</button>
+        </div>
+
+        <!--Bootstrap Modal start-->
+	        <div class="modal" id="foam-corner-options" tabindex="-1" role="dialog" aria-labelledby="projectPopup" aria-hidden="true">
+		        <div class="modal-dialog">
+			        <div class="modal-content">
+				        <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					        <h2 class="modal-title">Customize Foam Corners</h2>
+				        </div>
+				        <div class="modal-body" id="project-loading">
+                            <div class="input-group">
+                                <label for="foam-corner-width">Enter the width of your foam corners <em>(in inches)</em></label>
+                                <input type="text" class="form-control" name="foam-corner-width" value="1.5">
+                            </div>
+				        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btm-lg center-block" data-dismiss="modal">Save</button>
+                        </div>
+			        </div>
+		        </div>
+	        </div>
+        <!--Bootstrap Modal end-->
+    </script>
+
+    <script src="js/libs/jquery-1.10.2.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/boxBuilder.js"></script>
+    <script src="js/libs/handlebars-1.1.2.js"></script>
+    <script src="js/libs/ember-1.7.0.js"></script>
+    <script src="js/app.js"></script>
+    <!-- to activate the test runner, add the "?test" query string parameter -->
+    <!--script src="tests/runner.js"></script-->
+</body>
+</html>

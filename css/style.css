@@ -1,0 +1,55 @@
+/* Put your CSS here */
+.ember-application {
+    margin: 20px;
+    background-color: #e0d2b8;
+    font-family: 'Arvo', serif;
+}
+.navbar-header {
+//    color: #0288cf;
+}
+.center-box {
+    height: 400px;
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -200px;
+    padding:20px;
+    background-color:#daa570;
+}
+h3 {
+    margin-top:0px;
+}
+p {
+    margin-top:25px;
+}
+.begin-button {
+    color: #000000;
+    position:absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -45px;
+}
+.submit-button {
+//    color: #000000;
+    position:absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -49px;
+}
+.input-group-addon {
+    width:100px;
+}
+.input-group {
+    margin-top:15px;
+}
+.checkbox {
+    margin-top:15px;
+    font-size:16px;
+}
+
+//colors
+//blue:0288cf
+//tan:e0d2b8
+//box:daa570
