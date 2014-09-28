@@ -78,16 +78,35 @@ describe("boxBuilder object", function() {
         });
     });
     describe("specs method", function () {
-        it("should return an object", function () {
-            expect(boxBuilder.specs()).toBeTruthy();
-        });
-/*        describe("if the boxType is flat, the object", function () {
-            it("should have a top", function () {
-                expect(boxBuilder.specs().top).toBeTruthy();
+        describe("if the boxType is flat", function () {
+            it("should return an object", function () {
+                boxBuilder = BoxBuilder.create({
+                    objectLength : 24,
+                    objectWidth : 20,
+                    objectHeight : 6,
+                });
+                expect(boxBuilder.specs()).toBeTruthy();
             });
-//            it("should have a bottom", function () {
-//                expect(boxBuilder.specs().bottom).toBeTruthy();
-//            });
-        });*/
+        });
+        describe("if the boxType is skinny", function () {
+            it("should return an object", function () {
+                boxBuilder = BoxBuilder.create({
+                    objectLength : 24,
+                    objectWidth : 10,
+                    objectHeight : 6,
+                });
+                expect(boxBuilder.specs()).toBeTruthy();
+            });
+        });
+        describe("if the boxType is quad", function () {
+            it("should return an object", function () {
+                boxBuilder = BoxBuilder.create({
+                    objectLength : 24,
+                    objectWidth : 20,
+                    objectHeight : 20,
+                });
+                expect(boxBuilder.specs()).toBeTruthy();
+            });
+        });
     });
 });

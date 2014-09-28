@@ -34,7 +34,6 @@ var BoxBuilder = {
         if (d.cardboardWidth) {
             this._cardboardWidth = d.cardboardWidth * 1000;
         };
-        console.log(this.specs());
         return this;
     },
     changeFoamCorners : function () {
@@ -77,7 +76,7 @@ var BoxBuilder = {
         }
         var flapLength = 5500;
         if (this.boxType() !== 'quad' && this._objectHeight > 5500) {
-            flapLength = this._objectHeight;
+            flapLength = this._objectHeight + 2 * foamCornerWidth;
         }
         if (this.boxType() === 'quad') {
             topLength = this._objectLength + 2 * foamCornerWidth + 2 * this._foldWidth + 3 * this._cardboardWidth;
