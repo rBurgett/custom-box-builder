@@ -2,7 +2,7 @@ describe("boxBuilder object", function() {
     var boxBuilder;
     beforeEach(function() {
         boxBuilder = BoxBuilder.create({
-            objectLength : 24,
+            objectLength : 9,
             objectWidth : 20.75,
             objectHeight : 32.25
         });
@@ -52,7 +52,7 @@ describe("boxBuilder object", function() {
         });
     });
     describe("boxType method", function () {
-        it("should return 'flat' if the smallest dimension is less than 9 inches and the other dimensions are each more than twice as long as the smallest dimension", function () {
+        it("should return 'flat' if the smallest object dimension is less than 9 inches and the other dimensions are each more than twice as long as the smallest dimension", function () {
             boxBuilder = BoxBuilder.create({
                 objectLength : 24,
                 objectWidth : 20,
@@ -60,7 +60,7 @@ describe("boxBuilder object", function() {
             });
             expect(boxBuilder.boxType()).toBe("flat");
         });
-        it("should return 'skinny' if the smallest dimension is less than 9 inches and one of the other two dimensions is less than twice as long as the smallest dimension", function () {
+        it("should return 'skinny' if the smallest object dimension is less than 9 inches and one of the other two dimensions is less than twice as long as the smallest dimension", function () {
             boxBuilder = BoxBuilder.create({
                 objectLength : 24,
                 objectWidth : 10,
@@ -68,18 +68,26 @@ describe("boxBuilder object", function() {
             });
             expect(boxBuilder.boxType()).toBe("skinny");
         });
+        it("should return 'quad' if none of the object dimensions are less that 9 inches", function () {
+            boxBuilder = BoxBuilder.create({
+                objectLength : 24,
+                objectWidth : 20,
+                objectHeight : 20,
+            });
+            expect(boxBuilder.boxType()).toBe("quad");
+        });
     });
     describe("specs method", function () {
         it("should return an object", function () {
             expect(boxBuilder.specs()).toBeTruthy();
         });
-        describe("if the boxType is flat, the object", function () {
+/*        describe("if the boxType is flat, the object", function () {
             it("should have a top", function () {
                 expect(boxBuilder.specs().top).toBeTruthy();
             });
 //            it("should have a bottom", function () {
 //                expect(boxBuilder.specs().bottom).toBeTruthy();
 //            });
-        });
+        });*/
     });
 });
