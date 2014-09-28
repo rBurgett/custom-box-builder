@@ -34,7 +34,11 @@ var BoxBuilder = {
         if (d.cardboardWidth) {
             this._cardboardWidth = d.cardboardWidth * 1000;
         };
+        console.log(this.specs());
         return this;
+    },
+    changeFoamCorners : function () {
+        this._foamCorners ^= false;
     },
     boxType : function () {
         var dims = [];
@@ -61,37 +65,65 @@ var BoxBuilder = {
         var topWidth;
         var bottomLength;
         var bottomWidth;
+        var sideHeight;
+        var sideWidth1;
+        var sideWidth2;
         var foamCornerWidth;
         if (this._foamCorners) {
-            foamCorners = this._foamCornerWidth;
+            foamCornerWidth = this._foamCornerWidth;
         }
         else {
-            foamCorners = 0;
+            foamCornerWidth = 0;
         }
         var flapLength = 5500;
         if (this.boxType() !== 'quad' && this._objectHeight > 5500) {
             flapLength = this._objectHeight;
         }
-        if (this.boxType() !== 'quad') {
-            topLength = this._objectLength + (2 * foamCornerWidth) + (2 * this._foldWidth) + (2 * this._cardboardWidth);
-            topWidth = this._objectWidth + (2 * foamCornerWidth) + (2 * this._foldWidth) + (2 * this._cardboardWidth);
-            bottomLength = this._objectLength + (2 * foamCornerWidth) + (2 * this._foldWidth);
-            bottomWidth = this._objectWidth + (2 * foamCornerWidth) + (2 * this._foldWidth);
+        if (this.boxType() === 'quad') {
+            topLength = this._objectLength + 2 * foamCornerWidth + 2 * this._foldWidth + 3 * this._cardboardWidth;
+            topWidth = this._objectWidth + 2 * foamCornerWidth + 2 * this._foldWidth + 3 * this._cardboardWidth;
+            sideHeight = this._objectHeight + 2 * foamCornerWidth;
+            sideWidth1 = this._objectLength + 2 * foamCornerWidth + this._foldWidth;
+            sideWidth2 = this._objectWidth + 2 * foamCornerWidth + this._foldWidth;
+            return {
+                'type' : this.boxType(),
+                'lids' : {
+                    'flap' : flapLength / 1000,
+                    'length' : topLength / 1000,
+                    'width' : topWidth / 1000,
+                    'totalLength' : (topLength + 2 * flapLength) / 1000,
+                    'totalWidth' : (topWidth + 2 * flapLength) / 1000
+                },
+                'sides' : {
+                    'flap' : flapLength / 1000,
+                    'height' : sideHeight / 1000,
+                    'width1' : sideWidth1 / 1000,
+                    'width2' : sideWidth2 / 1000,
+                    'totalLength' : (flapLength + sideWidth1 + sideWidth2) / 1000
+                }
+            }
+
+        }
+        else {
+            topLength = this._objectLength + 2 * foamCornerWidth + 2 * this._foldWidth + 2 * this._cardboardWidth;
+            topWidth = this._objectWidth + 2 * foamCornerWidth + 2 * this._foldWidth + 3 * this._cardboardWidth;
+            bottomLength = this._objectLength + 2 * foamCornerWidth + 2 * this._foldWidth;
+            bottomWidth = this._objectWidth + 2 * foamCornerWidth + 2 * this._foldWidth;
             return {
                 'type' : this.boxType(),
                 'top' : {
                     'flap' : flapLength / 1000,
                     'length' : topLength / 1000,
                     'width' : topWidth / 1000,
-                    'totalLength' : topLength + (2 * flapLength) / 1000,
-                    'totalWidth' : topWidth + (2 * flapLength) / 1000
+                    'totalLength' : (topLength + 2 * flapLength) / 1000,
+                    'totalWidth' : (topWidth + 2 * flapLength) / 1000
                 },
                 'bottom' : {
                     'flap' : flapLength / 1000,
                     'length' : bottomLength / 1000,
                     'width' : bottomWidth / 1000,
-                    'totalLength' : bottomLength + (2 * flapLength) / 1000,
-                    'totalWidth' : bottomWidth + (2 * flapLength) / 1000
+                    'totalLength' : bottomLength / 1000 + (2 * flapLength) / 1000,
+                    'totalWidth' : bottomWidth / 1000 + (2 * flapLength) / 1000
                 }
             }
         }

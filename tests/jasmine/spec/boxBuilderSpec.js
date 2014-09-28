@@ -2,7 +2,7 @@ describe("boxBuilder object", function() {
     var boxBuilder;
     beforeEach(function() {
         boxBuilder = BoxBuilder.create({
-            objectLength : 9,
+            objectLength : 24,
             objectWidth : 20.75,
             objectHeight : 32.25
         });
