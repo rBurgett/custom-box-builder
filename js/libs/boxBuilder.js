@@ -8,22 +8,16 @@ App.BoxBuilder = Ember.Object.extend({
     cardboardWidth : 250,
     foldWidth: 250,
     foamCorners : true,
-/*    create : function (d) {
-        'use strict';
-        return Object.create(BoxBuilder).init(d);
-    },*/
     init : function () {
         'use strict';
         this.objectLength = this.objectLength * 1000 || '';
         this.objectWidth = this.objectWidth * 1000 || '';
         this.objectHeight = this.objectHeight * 1000 || 2500;
         this.foamCornerWidth = this.foamCornerWidth * 1000 || 1500;
-        this.cardboardWidth = this.cardboardWidth * 1000 || 250;
+        this.cardboardWidth = 250;
+        this.foldWidth = 250;
+        this.foamCorners = true;
         return this;
-    },
-    changeFoamCorners : function () {
-        'use strict';
-        this.foamCorners ^= false;
     },
     boxType : function () {
         'use strict';
@@ -117,6 +111,4 @@ App.BoxBuilder = Ember.Object.extend({
     }
 });
 
-var boxBuilder = App.BoxBuilder.create({
-//    objectWidth:24
-});
+var boxBuilder = App.BoxBuilder.create();
