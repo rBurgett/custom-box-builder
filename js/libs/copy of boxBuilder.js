@@ -1,36 +1,58 @@
 /*jslint nomen: true */
 
 App.BoxBuilder = Ember.Object.extend({
-    objectLength : '',
-    objectWidth : '',
-    objectHeight : '',
-    foamCornerWidth : '',
-    cardboardWidth : 250,
-    foldWidth: 250,
-    foamCorners : true,
+    _objectLength : '',
+    _objectWidth : '',
+    _objectHeight : '',
+    _foamCornerWidth : '',
+    _cardboardWidth : 250,
+    _foldWidth: 250,
+    _foamCorners : true,
+    objectLength : function () {
+        'use strict';
+        return this._objectLength / 1000;
+    },
+    objectWidth : function () {
+        'use strict';
+        return this._objectWidth / 1000;
+    },
+    objectHeight : function () {
+        'use strict';
+        return this._objectHeight / 1000;
+    },
+    foamCornerWidth : function () {
+        'use strict';
+        return this._foamCornerWidth / 1000;
+    },
+    cardboardWidth : function () {
+        'use strict';
+        return this._cardboardWidth / 1000;
+    },
 /*    create : function (d) {
         'use strict';
         return Object.create(BoxBuilder).init(d);
     },*/
-    init : function () {
+/*    init : function (d) {
         'use strict';
-        this.objectLength = this.objectLength * 1000 || '';
-        this.objectWidth = this.objectWidth * 1000 || '';
-        this.objectHeight = this.objectHeight * 1000 || 2500;
-        this.foamCornerWidth = this.foamCornerWidth * 1000 || 1500;
-        this.cardboardWidth = this.cardboardWidth * 1000 || 250;
+        this._objectLength = d.objectLength * 1000 || '';
+        this._objectWidth = d.objectWidth * 1000 || '';
+        this._objectHeight = d.objectHeight * 1000 || 2500;
+        this._foamCornerWidth = d.foamCornerWidth * 1000 || 1500;
+        if (d.cardboardWidth) {
+            this._cardboardWidth = d.cardboardWidth * 1000;
+        }
         return this;
-    },
+    },*/
     changeFoamCorners : function () {
         'use strict';
-        this.foamCorners ^= false;
+        this._foamCorners ^= false;
     },
     boxType : function () {
         'use strict';
         var dims = [];
-        dims.push({dim : this.objectLength});
-        dims.push({dim : this.objectWidth});
-        dims.push({dim : this.objectHeight});
+        dims.push({dim : this._objectLength});
+        dims.push({dim : this._objectWidth});
+        dims.push({dim : this._objectHeight});
         dims.sort(function (a, b) {
             return a.dim - b.dim
         });
@@ -56,22 +78,22 @@ App.BoxBuilder = Ember.Object.extend({
         var sideWidth1;
         var sideWidth2;
         var foamCornerWidth;
-        if (this.foamCorners) {
-            foamCornerWidth = this.foamCornerWidth;
+        if (this._foamCorners) {
+            foamCornerWidth = this._foamCornerWidth;
         }
         else {
             foamCornerWidth = 0;
         }
         var flapLength = 5500;
-        if (this.boxType() !== 'quad' && this.objectHeight > 2500) {
-            flapLength = this.objectHeight + 2 * foamCornerWidth;
+        if (this.boxType() !== 'quad' && this._objectHeight > 2500) {
+            flapLength = this._objectHeight + 2 * foamCornerWidth;
         }
         if (this.boxType() === 'quad') {
-            topLength = this.objectLength + 2 * foamCornerWidth + 2 * this.foldWidth + 3 * this.cardboardWidth;
-            topWidth = this.objectWidth + 2 * foamCornerWidth + 2 * this.foldWidth + 3 * this.cardboardWidth;
-            sideHeight = this.objectHeight + 2 * foamCornerWidth;
-            sideWidth1 = this.objectLength + 2 * foamCornerWidth + this.foldWidth;
-            sideWidth2 = this.objectWidth + 2 * foamCornerWidth + this.foldWidth;
+            topLength = this._objectLength + 2 * foamCornerWidth + 2 * this._foldWidth + 3 * this._cardboardWidth;
+            topWidth = this._objectWidth + 2 * foamCornerWidth + 2 * this._foldWidth + 3 * this._cardboardWidth;
+            sideHeight = this._objectHeight + 2 * foamCornerWidth;
+            sideWidth1 = this._objectLength + 2 * foamCornerWidth + this._foldWidth;
+            sideWidth2 = this._objectWidth + 2 * foamCornerWidth + this._foldWidth;
             return {
                 'type' : this.boxType(),
                 'lids' : {
@@ -92,10 +114,10 @@ App.BoxBuilder = Ember.Object.extend({
 
         }
         else {
-            topLength = this.objectLength + 2 * foamCornerWidth + 2 * this.foldWidth + 2 * this.cardboardWidth;
-            topWidth = this.objectWidth + 2 * foamCornerWidth + 2 * this.foldWidth + 3 * this.cardboardWidth;
-            bottomLength = this.objectLength + 2 * foamCornerWidth + 2 * this.foldWidth;
-            bottomWidth = this.objectWidth + 2 * foamCornerWidth + 2 * this.foldWidth;
+            topLength = this._objectLength + 2 * foamCornerWidth + 2 * this._foldWidth + 2 * this._cardboardWidth;
+            topWidth = this._objectWidth + 2 * foamCornerWidth + 2 * this._foldWidth + 3 * this._cardboardWidth;
+            bottomLength = this._objectLength + 2 * foamCornerWidth + 2 * this._foldWidth;
+            bottomWidth = this._objectWidth + 2 * foamCornerWidth + 2 * this._foldWidth;
             return {
                 'type' : this.boxType(),
                 'top' : {
@@ -117,6 +139,4 @@ App.BoxBuilder = Ember.Object.extend({
     }
 });
 
-var boxBuilder = App.BoxBuilder.create({
-//    objectWidth:24
-});
+var boxBuilder = App.BoxBuilder.create();

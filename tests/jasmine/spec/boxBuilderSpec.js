@@ -10,17 +10,17 @@ describe("boxBuilder object", function() {
     it("should exist", function() {
         expect(boxBuilder).toBeTruthy();
     });
-    it("should have a default foam corner width", function() {
-        expect(boxBuilder.foamCornerWidth()).toBeTruthy();
-    });
     it("should have a default cardboard width", function() {
         expect(boxBuilder.cardboardWidth()).toBeTruthy();
     });
     it("should have a cardboard fold width", function() {
         expect(boxBuilder._foldWidth).toBeTruthy();
     });
-    it("should have a foam corners property set to true", function() {
+    it("should have a foam corners boolean", function() {
         expect(boxBuilder._foamCorners).toBeTruthy();
+    });
+    it("should have a foam corner width", function() {
+        expect(boxBuilder.foamCornerWidth()).toBeTruthy();
     });
     it("should have a length", function() {
         expect(boxBuilder.objectLength()).toBeTruthy();
@@ -32,15 +32,6 @@ describe("boxBuilder object", function() {
         expect(boxBuilder.objectHeight()).toBeTruthy();
     });
     describe("init method", function () {
-        it("should take an optional foamCornerWidth property", function () {
-            boxBuilder = BoxBuilder.create({
-                objectLength : 24,
-                objectWidth : 20.75,
-                objectHeight : 32.25,
-                foamCornerWidth : 0.75
-            });
-            expect(boxBuilder.foamCornerWidth()).toEqual(0.75);
-        });
         it("should take an optional cardboardWidth property", function () {
             boxBuilder = BoxBuilder.create({
                 objectLength : 24,

@@ -8,7 +8,7 @@
 //    color: #0288cf;
 }
 .center-box {
-    height: 400px;
+    min-height: 400px;
     width: 600px;
     position: absolute;
     left: 50%;
@@ -46,6 +46,7 @@ p {
 }
 .checkbox {
     margin-top:15px;
+    margin-bottom:50px;
     font-size:16px;
 }
 
