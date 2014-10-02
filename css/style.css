@@ -49,6 +49,94 @@ p {
     margin-bottom:50px;
     font-size:16px;
 }
+.instructionsContainer {
+    background-color:#FFFFFF;
+}
+.instructionsBox {
+    border-color:#000000;
+    border-width:1px;
+    border-style:solid;
+    margin:10px;
+    padding:10px;
+    width:90%;
+    height:90%;
+}
+.instructions {
+    margin: 0px;
+}
+.whole-box {
+    position:absolute;
+    margin-left:50px;
+    margin-top: 25px;
+    background-color: #e0d2b8;
+    background-color: #daa570;
+    border-style: solid;
+    border-color: #908063;
+    border-width: 1px;
+    width: 450px;
+    height: 200px;
+}
+.lid-inner {
+    position:absolute;
+    left:38px;
+    top:38px;
+    width: 372px;
+    height: 122px;
+    border-style:dotted;
+    border-color: #908063;
+    border-width: 1px;
+}
+.lid-corner-tl {
+    position:absolute;
+    left:-1px;
+    top:-1px;
+    width: 40px;
+    height:40px;
+    border-style: solid;
+    border-bottom-style:dotted;
+    border-color: #908063;
+    border-right-color: #000000;
+    border-width: 1px;
+}
+.lid-corner-tr {
+    position:absolute;
+    right:-1px;
+    top:-1px;
+    width: 40px;
+    height:40px;
+    border-style: solid;
+    border-bottom-style:dotted;
+    border-color: #908063;
+    border-left-color: #000000;
+    border-width: 1px;
+}
+.lid-corner-bl {
+    position:absolute;
+    left:-1px;
+    bottom:-1px;
+    width: 40px;
+    height:40px;
+    border-style: solid;
+    border-top-style:dotted;
+    border-color: #908063;
+    border-right-color: #000000;
+    border-width: 1px;
+}
+.lid-corner-br {
+    position:absolute;
+    right:-1px;
+    bottom:-1px;
+    width: 40px;
+    height:40px;
+    border-style: solid;
+    border-top-style:dotted;
+    border-color: #908063;
+    border-left-color: #000000;
+    border-width: 1px;
+}
+
+//begin box model classes
+//end box model classes
 
 //colors
 //blue:0288cf

@@ -83,10 +83,43 @@
     </script>
 
     <script type="text/x-handlebars" id="construct">
-        <div class="center-box">
-            <h3>Build your box!</h3>
-            {{partial 'errors'}}
-            {{length}} and {{width}} and {{height}} and {{foamCorners}} and {{foamCornerWidth}}
+        <div class="container instructionsContainer">
+            <h3 style="margin-top:10px;">Build your box!</h3>
+            {{#if model.skinny}}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="instructionsBox">
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Top</h3>
+                            <p class="instructions">Here are your instructions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="height:400px;">
+                        <div class="whole-box">
+                            <div class="lid-inner">
+                            </div>
+                            <div class="lid-corner-tl">
+                            </div>
+                            <div class="lid-corner-tr">
+                            </div>
+                            <div class="lid-corner-bl">
+                            </div>
+                            <div class="lid-corner-br">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="instructionsBox">
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
+                            <p class="instructions">Here are your other instructions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        
+                    </div>
+                </div>
+            {{/if}}
         </div>
     </script>
 

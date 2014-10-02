@@ -1,5 +1,7 @@
 /*jslint nomen: true */
 
+App.BoxCSS = Ember.Object.extend({});
+
 App.BoxBuilder = Ember.Object.extend({
     objectLength : '',
     objectWidth : '',
@@ -8,6 +10,7 @@ App.BoxBuilder = Ember.Object.extend({
     cardboardWidth : 250,
     foldWidth: 250,
     foamCorners : true,
+    css : '',
     init : function () {
         'use strict';
         this.objectLength = this.objectLength * 1000 || '';
@@ -42,6 +45,7 @@ App.BoxBuilder = Ember.Object.extend({
     },
     specs : function () {
         'use strict';
+        var dims;
         var topLength;
         var topWidth;
         var bottomLength;
@@ -90,7 +94,7 @@ App.BoxBuilder = Ember.Object.extend({
             topWidth = this.objectWidth + 2 * foamCornerWidth + 2 * this.foldWidth + 3 * this.cardboardWidth;
             bottomLength = this.objectLength + 2 * foamCornerWidth + 2 * this.foldWidth;
             bottomWidth = this.objectWidth + 2 * foamCornerWidth + 2 * this.foldWidth;
-            return {
+            dims = {
                 'type' : this.boxType(),
                 'top' : {
                     'flap' : flapLength / 1000,
@@ -106,9 +110,32 @@ App.BoxBuilder = Ember.Object.extend({
                     'totalLength' : bottomLength / 1000 + (2 * flapLength) / 1000,
                     'totalWidth' : bottomWidth / 1000 + (2 * flapLength) / 1000
                 }
-            }
+            };
+            this.cssCalc(dims);
+            return dims;
         }
+    },
+    cssCalc : function (dims) {
+        var topInPi;
+        if (dims.type === 'skinny') {
+            boxCSS.set('skinny', true);
+            boxCSS.set('flat', false);
+            boxCSS.set('quad', false);
+            InToPi = 450000 / (dims.top.flap * 1000 * 2 + dims.top.length * 2);
+            
+        };
+        if (dims.type === 'flat') {
+            boxCSS.set('skinny', false);
+            boxCSS.set('flat', true);
+            boxCSS.set('quad', false);
+        };
+        if (dims.type === 'quad') {
+            boxCSS.set('skinny', false);
+            boxCSS.set('flat', false);
+            boxCSS.set('quad', true);
+        };
     }
 });
-
+var boxCSS = App.BoxCSS.create();
 var boxBuilder = App.BoxBuilder.create();
+
