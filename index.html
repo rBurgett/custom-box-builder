@@ -89,12 +89,12 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="instructionsBox">
-                            <h3 style="margin:0px;margin-bottom:10px;">Box Top</h3>
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
                             <p class="instructions">Here are your instructions</p>
                         </div>
                     </div>
                     <div class="col-lg-6" style="height:400px;">
-                        <div class="whole-box">
+                        <div class="whole-box" {{bind-attr style=model.wholeBottom}}>
                             <div class="lid-inner">
                             </div>
                             <div class="lid-corner-tl">
@@ -111,7 +111,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="instructionsBox">
-                            <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Top</h3>
                             <p class="instructions">Here are your other instructions</p>
                         </div>
                     </div>

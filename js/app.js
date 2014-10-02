@@ -37,11 +37,18 @@ App.ConstructRoute = Ember.Route.extend({
         boxBuilder.set('foamCorners', foamCorners);
         boxBuilder.set('foamCornerWidth', foamCornerWidth);
         boxBuilder.specs();
-        return {
+        return boxCSS;
+/*        return {
             skinny : boxCSS.skinny,
             flat : boxCSS.flat,
-            quad : boxCSS.quad
-        };
+            quad : boxCSS.quad,
+            flap : boxCSS.flap,
+            wholeBottom: boxCSS.wholeBottom,
+            topLength : boxCSS.topLength,
+            topWidth : boxCSS.topWidth,
+            bottomLength : boxCSS.bottomLength,
+            bottomWidth : boxCSS.bottomWidth
+        };*/
     },
 });
 App.ConstructController = Ember.Controller.extend({
