@@ -116,28 +116,33 @@ App.BoxBuilder = Ember.Object.extend({
         }
     },
     cssCalc : function (dims) {
-        var inToPi, flap, topLength, topWidth, bottomLength, bottomWidth, wholeBottom, wholeTop;
+        var inToPi, flap, topLength, topWidth, bottomLength, bottomWidth, wholeBottom, wholeTop, wholeBottomWidth, wholeBottomHeight;
         if (dims.type === 'skinny') {
             boxCSS.set('skinny', true);
             boxCSS.set('flat', false);
             boxCSS.set('quad', false);
             inToPi = 450000 / (dims.top.flap * 2000 + dims.top.length * 1000);
             inToPi = inToPi.toFixed();
-            console.log(inToPi);
-            console.log(dims.top.flap);
+//            console.log(inToPi);
+//            console.log(dims.top.flap);
             flap = (dims.top.flap * 1000 * inToPi) / 1000;
             flap = flap.toFixed();
+           console.log(flap);
             bottomLength = (dims.bottom.length * 1000 * inToPi) / 1000;
             bottomLength = bottomLength.toFixed();
+           console.log(bottomLength);
             bottomWidth = (dims.bottom.width *1000 * inToPi) / 1000;
             bottomWidth = bottomWidth.toFixed();
+           console.log(bottomWidth);
             topLength = (dims.top.length * 1000 * inToPi) / 1000;
             topLength = topLength.toFixed();
             topWidth = (dims.top.width *1000 * inToPi) / 1000;
             topWidth = topWidth.toFixed();
-            console.log(bottomWidth);
-            wholeBottom = 'width:' + 2 * flap + bottomLength+ 'px;height:' + 2 * flap + bottomWidth + 'px;';
-            console.log(wholeBottom);
+//            console.log(bottomWidth);
+            wholeBottomWidth = bottomLength + 2 * flap;
+           console.log(wholeBottomWidth);
+            wholeBottom = 'width:' + wholeBottomWidth + 'px;height:' + (2 * flap) + bottomWidth + 'px;';
+           console.log(wholeBottom);
             wholeTop = 'width:' + topLength + flap * 2 + 'px;height:' + topWidth + flap * 2 + 'px;';
             boxCSS.set('flap', flap);
             boxCSS.set('topLength', topLength);

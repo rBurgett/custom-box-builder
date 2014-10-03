@@ -5,7 +5,8 @@ App.Errors = Ember.Object.extend({
     list : [],
     throw : function (message) {
         this.list.pushObject({error: message});
-    }
+    },
+    errorCheck : false
 });
 var errors = App.Errors.create();
 //End Errors class
@@ -32,14 +33,26 @@ App.BeginController = Ember.Controller.extend({
     foamCornerWidth: 1.5,
     actions : {
         constructBox : function() {
-            var errorsCheck;
+            errors.errorsCheck = false;
+            if (isNaN(this.length) || isNaN(this.width) || isNaN(this.height) || isNaN(this.foamCornerWidth)) {
+                errors.throw("Only number values are accepted");
+                errors.errorsCheck = true;
+            };
             if (!this.length) {
                 errors.throw("You must enter a length");
-                errorsCheck = true;
+                errors.errorsCheck = true;
             };
             if (!this.width) {
                 errors.throw("You must enter a width");
-                errorsCheck = true;
+                errors.errorsCheck = true;
+            };
+            if (this.length && !isNaN(this.length) && this.length < 9) {
+                    errors.throw("Your length must be at least 9 inches");
+                    errors.errorsCheck = true;
+            };
+            if (this.width && !isNaN(this.width) && this.width < 9) {
+                errors.throw("Your width must be at least 9 inches");
+                errors.errorsCheck = true;
             };
             if (!this.height) {
                 this.height = 2.5;
@@ -50,11 +63,21 @@ App.BeginController = Ember.Controller.extend({
             if (!this.foamCornerWidth) {
                 this.foamCornerWidth = 1.5;
             };
-            if (this.errorsCheck) {
-                errorsCheck = false;
+            if (errors.errorsCheck) {
                 return;
             };
-            alert('No errors!');
+            this.transitionToRoute('construct', {
+                queryParams: {
+                    length: this.length,
+                    width: this.width,
+                    height: this.height,
+                    foamCorners: this.foamCorners,
+                    foamCornerWidth: this.foamCornerWidth
+                }
+            });
+//            console.log('No errors!');
+
+//            };
         }
     }
 });
