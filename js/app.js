@@ -24,6 +24,41 @@ App.BeginRoute = Ember.Route.extend({
         };
     }
 });
+App.BeginController = Ember.Controller.extend({
+    length: null,
+    width: null,
+    height: null,
+    foamCorners: true,
+    foamCornerWidth: 1.5,
+    actions : {
+        constructBox : function() {
+            var errorsCheck;
+            if (!this.length) {
+                errors.throw("You must enter a length");
+                errorsCheck = true;
+            };
+            if (!this.width) {
+                errors.throw("You must enter a width");
+                errorsCheck = true;
+            };
+            if (!this.height) {
+                this.height = 2.5;
+            };
+            if (this.height < 2.5) {
+                this.height = 2.5;
+            };
+            if (!this.foamCornerWidth) {
+                this.foamCornerWidth = 1.5;
+            };
+            if (this.errorsCheck) {
+                errorsCheck = false;
+                return;
+            };
+            alert('No errors!');
+        }
+    }
+});
+
 App.ConstructRoute = Ember.Route.extend({
     model: function (queryParams) {
         var length = queryParams.length * 1000;

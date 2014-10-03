@@ -111,7 +111,7 @@ App.BoxBuilder = Ember.Object.extend({
                     'totalWidth' : bottomWidth / 1000 + (2 * flapLength) / 1000
                 }
             };
-            console.log(this.cssCalc(dims));
+            this.cssCalc(dims);
             return dims;
         }
     },
@@ -123,7 +123,8 @@ App.BoxBuilder = Ember.Object.extend({
             boxCSS.set('quad', false);
             inToPi = 450000 / (dims.top.flap * 2000 + dims.top.length * 1000);
             inToPi = inToPi.toFixed();
-//            console.log(inToPi);
+            console.log(inToPi);
+            console.log(dims.top.flap);
             flap = (dims.top.flap * 1000 * inToPi) / 1000;
             flap = flap.toFixed();
             bottomLength = (dims.bottom.length * 1000 * inToPi) / 1000;
@@ -134,8 +135,9 @@ App.BoxBuilder = Ember.Object.extend({
             topLength = topLength.toFixed();
             topWidth = (dims.top.width *1000 * inToPi) / 1000;
             topWidth = topWidth.toFixed();
-            console.log(flap);
-            wholeBottom = 'width:' + bottomLength + (2 * flap) + 'px;height:' + bottomWidth + (2 * flap) + 'px;';
+            console.log(bottomWidth);
+            wholeBottom = 'width:' + 2 * flap + bottomLength+ 'px;height:' + 2 * flap + bottomWidth + 'px;';
+            console.log(wholeBottom);
             wholeTop = 'width:' + topLength + flap * 2 + 'px;height:' + topWidth + flap * 2 + 'px;';
             boxCSS.set('flap', flap);
             boxCSS.set('topLength', topLength);

@@ -37,26 +37,26 @@
             <form>
                 <div class="input-group input-group-lg" style="width:70%;">
                     <span class="input-group-addon">Length</span>
-                    <input type="text" class="form-control" name="length" placeholder="Enter the length in inches">
+                    {{input type="text" class="form-control" value=length placeholder="Enter the length in inches"}}
                 </div>
                 <div class="input-group input-group-lg" style="width:70%;">
                     <span class="input-group-addon">Width</span>
-                    <input type="text" class="form-control" name="width" placeholder="Enter the width in inches">
+                    {{input type="text" class="form-control" value=width placeholder="Enter the width in inches"}}
                 </div>
                 <div class="input-group input-group-lg" style="width:70%;">
                     <span class="input-group-addon">Height</span>
-                    <input type="text" class="form-control" name="height" placeholder="Enter the height in inches">
+                    {{input type="text" class="form-control" value=height placeholder="Enter the height in inches"}}
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="foam-corners" value="true" checked> Use foam corners 
+                        {{input type="checkbox" checked=foamCorners}} Use foam corners
                         <a href="#" data-toggle="modal" data-target="#foam-corner-options" title="Click here to change the foam corner size">
                             <span class="glyphicon glyphicon-cog"></span>
                         </a>
                     </label>
                 </div>
             </form>
-            <button type="button" class="btn btn-primary btn-lg submit-button" center-block">Submit</button>
+                <button type+"button" class="btn btn-primary btn-lg submit-button center-block" {{action 'constructBox'}}>Submit</button>
         </div>
 
         <!--Bootstrap Modal start-->
@@ -70,7 +70,7 @@
 				        <div class="modal-body" id="project-loading">
                             <div class="input-group">
                                 <label for="foam-corner-width">Enter the width of your foam corners <em>(in inches)</em></label>
-                                <input type="text" class="form-control" name="foam-corner-width" value="1.5">
+                                {{input type="text" class="form-control" value=foamCornerWidth}}
                             </div>
 				        </div>
                         <div class="modal-footer">
