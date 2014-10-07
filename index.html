@@ -87,36 +87,153 @@
             <h3 style="margin-top:10px;">Build your box!</h3>
             {{#if model.skinny}}
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="min-height:400px;">
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
                             <p class="instructions">Here are your instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="height:400px;">
+                    <div class="col-lg-6" style="min-height:400px;">
                         <div class="whole-box" {{bind-attr style=model.wholeBottom}}>
-                            <div class="lid-inner">
+                            <div class="length-brackets-outer">
+                                <p class="length-note">{{model.totalLengthNote}}"</p>
                             </div>
-                            <div class="lid-corner-tl">
+                            <div class="width-brackets" {{bind-attr style=model.bottomTotalWidthCSS}}>
+                                <p class="length-note">{{model.totalWidthNote}}"</p>
                             </div>
-                            <div class="lid-corner-tr">
+                            <div class="lid-inner" {{bind-attr style=model.bottomInnerBox}}>
+                                <div class="length-brackets-top" {{bind-attr style=model.flapOffset}}>
+                                    <p class="length-note">{{model.lengthNote}}"</p>
+                                </div>
+                                <div class="width-brackets" {{bind-attr style=model.bottomWidthCSS}}>
+                                    <p class="length-note">{{model.widthNote}}"</p>
+                                </div>
                             </div>
-                            <div class="lid-corner-bl">
+                            <div class="lid-corner-tl" {{bind-attr style=model.corners}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.flapNote}}"</p>
+                                </div>
                             </div>
-                            <div class="lid-corner-br">
+                            <div class="lid-corner-tr" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-bl" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-br" {{bind-attr style=model.corners}}>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="min-height:400px;">
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Top</h3>
                             <p class="instructions">Here are your other instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="whole-box" {{bind-attr style=model.wholeTop}}>
+                            <div class="length-brackets-outer">
+                                <p class="length-note">{{model.totalTopLengthNote}}"</p>
+                            </div>
+                            <div class="width-brackets" {{bind-attr style=model.topTotalWidthCSS}}>
+                                <p class="length-note">{{model.totalTopWidthNote}}"</p>
+                            </div>
+                            <div class="lid-inner" {{bind-attr style=model.topInnerBox}}>
+                                <div class="length-brackets-top" {{bind-attr style=model.flapOffset}}>
+                                    <p class="length-note">{{model.topLengthNote}}"</p>
+                                </div>
+                                <div class="width-brackets" {{bind-attr style=model.topWidthCSS}}>
+                                    <p class="length-note">{{model.topWidthNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-corner-tl" {{bind-attr style=model.corners}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.flapNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-corner-tr" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-bl" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-br" {{bind-attr style=model.corners}}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+            {{#if model.flat}}
+                <div class="row">
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="instructionsBox">
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
+                            <p class="instructions">Here are your instructions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="whole-box" {{bind-attr style=model.wholeBottom}}>
+                            <div class="length-brackets-outer">
+                                <p class="length-note">{{model.totalLengthNote}}"</p>
+                            </div>
+                            <div class="width-brackets" {{bind-attr style=model.bottomTotalWidthCSS}}>
+                                <p class="length-note">{{model.totalWidthNote}}"</p>
+                            </div>
+                            <div class="lid-inner" {{bind-attr style=model.bottomInnerBox}}>
+                                <div class="length-brackets-top" {{bind-attr style=model.flapOffset}}>
+                                    <p class="length-note">{{model.lengthNote}}"</p>
+                                </div>
+                                <div class="width-brackets" {{bind-attr style=model.bottomWidthCSS}}>
+                                    <p class="length-note">{{model.widthNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-corner-tl" {{bind-attr style=model.corners}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.flapNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-corner-tr" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-bl" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-br" {{bind-attr style=model.corners}}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="instructionsBox">
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Top</h3>
+                            <p class="instructions">Here are your other instructions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="whole-box" {{bind-attr style=model.wholeTop}}>
+                            <div class="length-brackets-outer">
+                                <p class="length-note">{{model.totalTopLengthNote}}"</p>
+                            </div>
+                            <div class="width-brackets" {{bind-attr style=model.topTotalWidthCSS}}>
+                                <p class="length-note">{{model.totalTopWidthNote}}"</p>
+                            </div>
+                            <div class="lid-inner" {{bind-attr style=model.topInnerBox}}>
+                                <div class="length-brackets-top" {{bind-attr style=model.flapOffset}}>
+                                    <p class="length-note">{{model.topLengthNote}}"</p>
+                                </div>
+                                <div class="width-brackets" {{bind-attr style=model.topWidthCSS}}>
+                                    <p class="length-note">{{model.topWidthNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-alt-corner-tl" {{bind-attr style=model.corners}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.flapNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-alt-corner-tr" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-alt-corner-bl" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-alt-corner-br" {{bind-attr style=model.corners}}>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {{/if}}
