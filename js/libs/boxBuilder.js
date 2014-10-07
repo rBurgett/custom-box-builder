@@ -242,5 +242,3 @@ App.BoxBuilder = Ember.Object.extend({
         };
     }
 });
-var boxCSS = App.BoxCSS.create();
-var boxBuilder = App.BoxBuilder.create();
