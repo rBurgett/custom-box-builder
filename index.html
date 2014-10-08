@@ -85,9 +85,10 @@
     <script type="text/x-handlebars" id="construct">
         <div class="container instructionsContainer">
             <h3 style="margin-top:10px;">Build your box!</h3>
+            <h4>Object Dimensions: <span class="underline">{{model.objectLength}} <small>x</small> {{model.objectWidth}} <small>x</small> {{model.objectHeight}}</span><small> in.</small></h4>
             {{#if model.skinny}}
                 <div class="row">
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-height:400px;">
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
                             <p class="instructions">Here are your instructions</p>
@@ -124,7 +125,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-height:400px;">
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Top</h3>
                             <p class="instructions">Here are your other instructions</p>
@@ -163,7 +164,7 @@
             {{/if}}
             {{#if model.flat}}
                 <div class="row">
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-height:400px;">
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
                             <p class="instructions">Here are your instructions</p>
@@ -237,6 +238,79 @@
                     </div>
                 </div>
             {{/if}}
+            {{#if model.quad}}
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-height:400px;">
+                        <div class="instructionsBox">
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Sides</h3>
+                            <p class="instructions">Here are your instructions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="whole-box" {{bind-attr style=model.sideTotalCSS}}>
+                            <div class="box-side-length" {{bind-attr style=model.sideLengthCSS}}>
+                            </div>
+                            <div class="box-side-width" {{bind-attr style=model.sideWidthCSS}}>
+                            </div>
+                            <div class="box-side-flap" {{bind-attr style=model.sideFlapCSS}}>
+                            </div>
+                            <h4 class="box-quantity-note">x2</h4>
+                        </div>
+
+
+
+                            <!--div class="length-brackets-outer">
+                                <p class="length-note">{{model.totalLengthNote}}"</p>
+                            </div>
+
+                            </div>
+                            <div class="lid-corner-tr" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-bl" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-corner-br" {{bind-attr style=model.corners}}>
+                            </div-->
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="instructionsBox">
+                            <h3 style="margin:0px;margin-bottom:10px;">Box Top</h3>
+                            <p class="instructions">Here are your other instructions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="min-height:400px;">
+                        <div class="whole-box" {{bind-attr style=model.wholeTop}}>
+                            <div class="length-brackets-outer">
+                                <p class="length-note">{{model.totalTopLengthNote}}"</p>
+                            </div>
+                            <div class="width-brackets" {{bind-attr style=model.topTotalWidthCSS}}>
+                                <p class="length-note">{{model.totalTopWidthNote}}"</p>
+                            </div>
+                            <div class="lid-inner" {{bind-attr style=model.topInnerBox}}>
+                                <div class="length-brackets-top" {{bind-attr style=model.flapOffset}}>
+                                    <p class="length-note">{{model.topLengthNote}}"</p>
+                                </div>
+                                <div class="width-brackets" {{bind-attr style=model.topWidthCSS}}>
+                                    <p class="length-note">{{model.topWidthNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-alt-corner-tl" {{bind-attr style=model.corners}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.flapNote}}"</p>
+                                </div>
+                            </div>
+                            <div class="lid-alt-corner-tr" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-alt-corner-bl" {{bind-attr style=model.corners}}>
+                            </div>
+                            <div class="lid-alt-corner-br" {{bind-attr style=model.corners}}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
         </div>
     </script>
 
@@ -251,10 +325,11 @@
 
     <script src="js/libs/jquery-1.10.2.js"></script>
     <script src="js/libs/bootstrap.min.js"></script>
+    <!--script src="js/libs/boxBuilder.js"></script-->
     <script src="js/libs/handlebars-1.1.2.js"></script>
     <script src="js/libs/ember-1.7.0.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/libs/boxBuilder.js"></script>
+
     <!-- to activate the test runner, add the "?test" query string parameter -->
     <!--script src="tests/runner.js"></script-->
 </body>
