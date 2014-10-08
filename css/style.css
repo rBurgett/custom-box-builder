@@ -263,6 +263,7 @@ h4 {
     -ms-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
+/*    margin-left:-146px; */
 }
 
 /*    left: -91px; /* -(flap + half-of-width + 11)
