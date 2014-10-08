@@ -241,7 +241,8 @@ h4 {
     border-width: 1px;
 }
 .box-side-flap {
-    
+    position: absolute;
+    top: -1px;
 }
 .box-quantity-note {
     position: absolute;
@@ -251,6 +252,17 @@ h4 {
     top: 50%;
     margin: 0px;
     margin-top: -15px;
+}
+.sides-height-brackets {
+    position:absolute;
+    height:15px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    border-bottom-style: none;
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 /*    left: -91px; /* -(flap + half-of-width + 11)

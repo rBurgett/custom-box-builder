@@ -248,11 +248,27 @@
                     </div>
                     <div class="col-lg-6" style="min-height:400px;">
                         <div class="whole-box" {{bind-attr style=model.sideTotalCSS}}>
+                            <div class="sides-height-brackets" {{bind-attr style=model.sideHeightBracketsCSS}}>
+                                <p class="length-note">{{model.sideHeight}}"</p>
+                            </div>
+                            <div class="length-brackets-outer">
+                                <p class="length-note">{{model.sideTotalLengthNote}}"</p>
+                            </div>
+
                             <div class="box-side-length" {{bind-attr style=model.sideLengthCSS}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.sideLengthNote}}"</p>
+                                </div>
                             </div>
                             <div class="box-side-width" {{bind-attr style=model.sideWidthCSS}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.sideWidthNote}}"</p>
+                                </div>
                             </div>
                             <div class="box-side-flap" {{bind-attr style=model.sideFlapCSS}}>
+                                <div class="length-brackets-flap">
+                                    <p class="length-note">{{model.flapNote}}"</p>
+                                </div>
                             </div>
                             <h4 class="box-quantity-note">x2</h4>
                         </div>

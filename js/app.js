@@ -209,9 +209,9 @@ App.BoxBuilder = Ember.Object.extend({
             inToPi = Number(inToPi.toFixed());
             flap = (dims.sides.flap * 1000 * inToPi) / 1000;
             flap = Number(flap.toFixed());
-            sideLength = (dims.sides.width1 * 1000 * inToPi) / 1000;
+            sideLength = (dims.sides.width2 * 1000 * inToPi) / 1000;
             sideLength = Number(sideLength.toFixed());
-            sideWidth = (dims.sides.width2 * 1000 * inToPi) / 1000;
+            sideWidth = (dims.sides.width1 * 1000 * inToPi) / 1000;
             sideWidth = Number(sideWidth.toFixed());
             sideTotalLength = sideLength + sideWidth + flap + 2;
             sideHeight = (dims.sides.height * 1000 * inToPi) / 1000;
@@ -219,18 +219,23 @@ App.BoxBuilder = Ember.Object.extend({
             sideTotalCSS = 'width:' + sideTotalLength + 'px;height:' + sideHeight + 'px;';
             sideLengthCSS = 'width:' + sideLength + 'px;height:' + sideHeight + 'px;';
             sideWidthCSS = 'left:' + sideLength + 'px;width:' + sideWidth + 'px;height:' + sideHeight + 'px;';
-            sideFlapCSS = 'width:' + flap + 'px;height:' + sideHeight + 'px;';
-
+            sideFlapCSSOffset = sideLength + sideWidth;
+            sideFlapCSS = 'width:' + flap + 'px;height:' + sideHeight + 'px;left:' + sideFlapCSSOffset + 'px;';
+            sideHeightBracketsCSS = 'width:' + sideHeight + 'px;';
 
             boxCSS.set('sideLength', sideLength);
             boxCSS.set('sideWidth', sideWidth);
             boxCSS.set('sideTotalLength', sideTotalLength);
             boxCSS.set('sideHeight', sideHeight);
-
             boxCSS.set('sideTotalCSS', sideTotalCSS);
             boxCSS.set('sideLengthCSS', sideLengthCSS);
             boxCSS.set('sideWidthCSS', sideWidthCSS);
             boxCSS.set('sideFlapCSS', sideFlapCSS);
+            boxCSS.set('sideHeightBracketsCSS', sideHeightBracketsCSS);
+            boxCSS.set('sideTotalLengthNote', dims.sides.totalLength);
+            boxCSS.set('sideLengthNote', dims.sides.width2);
+            boxCSS.set('sideWidthNote', dims.sides.width1);
+            boxCSS.set('flapNote', dims.sides.flap);
         };
     }
 });
