@@ -175,6 +175,8 @@ App.BoxBuilder = Ember.Object.extend({
 //            topTotalWidthCSSLeft = -1 * (wholeTopHeight / 2 + 11);
             topTotalWidthCSSLeft = -1 * (wholeTopHeight / 2 + 41);
             topTotalWidthCSS = 'width: ' + wholeTopHeight + 'px;' + 'top: ' + topTotalWidthCSSTop + 'px;margin-left:' + topTotalWidthCSSLeft + 'px;';
+            boxContainerHeightCalc = topWidth + 250;
+            boxContainerHeightCSS = 'height:' + boxContainerHeightCalc + 'px';
 
             boxCSS.set('flap', flap);
             boxCSS.set('bottomLength', bottomLength);
@@ -202,6 +204,7 @@ App.BoxBuilder = Ember.Object.extend({
             boxCSS.set('topWidthNote', dims.top.width);
             boxCSS.set('topWidthCSS', topWidthCSS);
             boxCSS.set('topTotalWidthCSS', topTotalWidthCSS);
+            boxCSS.set('boxContainerHeightCSS', boxContainerHeightCSS);
         };
         if (dims.type === 'quad') {
             boxCSS.set('skinny', false);
@@ -360,11 +363,18 @@ App.ConstructRoute = Ember.Route.extend({
             bottomLength : boxCSS.bottomLength,
             bottomWidth : boxCSS.bottomWidth
         };*/
-    },
+    }
 });
 App.ConstructController = Ember.Controller.extend({
     queryParams : ['length','width','height','foamCorners','foamCornerWidth'],
-/*    objectLength : boxBuilder.objectLength,
-    objectWidth : boxBuilder.objectWidth,
-    objectHeight : boxBuilder.objectHeight */
+    actions : {
+        updateLength : function () {
+            boxBuilder.set(this.model.objectLength);
+            boxBuilder.specs();
+            console.log('ok!');
+/*            var newLength = boxCSS.objectLength;
+            boxBuilder.set('objectLength', newlength)
+            boxBuilder.specs();*/
+        },
+    }
 });

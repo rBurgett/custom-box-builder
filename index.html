@@ -86,16 +86,17 @@
     <script type="text/x-handlebars" id="construct">
         <div class="container instructionsContainer">
             <h3 style="margin-top:10px;">Build your box!</h3>
-            <h4>Object Dimensions: <span class="underline">{{model.objectLength}} <small>x</small> {{model.objectWidth}} <small>x</small> {{model.objectHeight}}</span><small> in.</small></h4>
+            {{!--h4>Object Dimensions: <span class="underline">{{model.objectLength}} <small>x</small> {{model.objectWidth}} <small>x</small> {{model.objectHeight}}</span><small> in.</small></h4--}}
+            <h4>Object Dimensions: {{input value=model.objectLength action="updateLength" on="enter" class="changeDimensionsInput"}} <small>x</small> <input type="text" {{bind-attr value=model.objectWidth}} class="changeDimensionsInput"></input> <small>x</small> <input type="text" {{bind-attr value=model.objectHeight}} class="changeDimensionsInput"></input></span><small> in.</small></h4>
             {{#if model.skinny}}
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-height:400px;">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
                             <p class="instructions">Here are your instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6" {{bind-attr style=model.boxContainerHeightCSS}}>
                         <div class="whole-box" {{bind-attr style=model.wholeBottom}}>
                             <div class="length-brackets-outer">
                                 <p class="length-note">{{model.totalLengthNote}}"</p>
@@ -132,7 +133,7 @@
                             <p class="instructions">Here are your other instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6" {{bind-attr style=model.boxContainerHeightCSS}}>
                         <div class="whole-box" {{bind-attr style=model.wholeTop}}>
                             <div class="length-brackets-outer">
                                 <p class="length-note">{{model.totalTopLengthNote}}"</p>
@@ -165,13 +166,13 @@
             {{/if}}
             {{#if model.flat}}
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-height:400px;">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Bottom</h3>
                             <p class="instructions">Here are your instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6" {{bind-attr style=model.boxContainerHeightCSS}}>
                         <div class="whole-box" {{bind-attr style=model.wholeBottom}}>
                             <div class="length-brackets-outer">
                                 <p class="length-note">{{model.totalLengthNote}}"</p>
@@ -208,7 +209,7 @@
                             <p class="instructions">Here are your other instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6" {{bind-attr style=model.boxContainerHeightCSS}}>
                         <div class="whole-box" {{bind-attr style=model.wholeTop}}>
                             <div class="length-brackets-outer">
                                 <p class="length-note">{{model.totalTopLengthNote}}"</p>
@@ -241,13 +242,13 @@
             {{/if}}
             {{#if model.quad}}
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12" style="min-height:400px;">
+                    <div class="col-lg-6 col-md-12 col-sm-12" {{bind-attr style=model.boxContainerHeightCSS}}>
                         <div class="instructionsBox">
                             <h3 style="margin:0px;margin-bottom:10px;">Box Sides</h3>
                             <p class="instructions">Here are your instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6" {{bind-attr style=model.boxContainerHeightCSS}}>
                         <div class="whole-box" {{bind-attr style=model.sideTotalCSS}}>
                             <div class="sides-height-brackets" {{bind-attr style=model.sideHeightBracketsCSS}}>
                                 <p class="length-note">{{model.sideHeightNote}}"</p>
@@ -276,7 +277,7 @@
 
 
 
-                            <!--div class="length-brackets-outer">
+                            {{!--div class="length-brackets-outer">
                                 <p class="length-note">{{model.totalLengthNote}}"</p>
                             </div>
 
@@ -286,7 +287,7 @@
                             <div class="lid-corner-bl" {{bind-attr style=model.corners}}>
                             </div>
                             <div class="lid-corner-br" {{bind-attr style=model.corners}}>
-                            </div-->
+                            </div--}}
 
                     </div>
                 </div>
@@ -297,7 +298,7 @@
                             <p class="instructions">Here are your other instructions</p>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="min-height:400px;">
+                    <div class="col-lg-6" {{bind-attr style=model.boxContainerHeightCSS}}>
                         <div class="whole-box" {{bind-attr style=model.wholeTop}}>
                             <div class="length-brackets-outer">
                                 <p class="length-note">{{model.totalTopLengthNote}}"</p>
@@ -342,7 +343,6 @@
 
     <script src="js/libs/jquery-1.10.2.js"></script>
     <script src="js/libs/bootstrap.min.js"></script>
-    <!--script src="js/libs/boxBuilder.js"></script-->
     <script src="js/libs/handlebars-1.1.2.js"></script>
     <script src="js/libs/ember-1.7.0.js"></script>
     <script src="js/app.js"></script>
