@@ -136,7 +136,7 @@ App.BoxBuilder = Ember.Object.extend({
             bottomLength = Number(bottomLength.toFixed());
             bottomWidth = (dims.bottom.width *1000 * inToPi) / 1000;
             bottomWidth = Number(bottomWidth.toFixed());
-            wholeBottomWidth = bottomLength + flap;
+            wholeBottomWidth = bottomLength + 2 * flap;
             wholeBottomHeight = 2 * flap + bottomWidth;
             wholeBottom = 'width:' + wholeBottomWidth + 'px;height:' + wholeBottomHeight + 'px;';
             corners = 'width:' + flap + 'px;height:' + flap + 'px;';
@@ -159,20 +159,17 @@ App.BoxBuilder = Ember.Object.extend({
             topLength = Number(topLength.toFixed());
             topWidth = (dims.top.width *1000 * inToPi) / 1000;
             topWidth = Number(topWidth.toFixed());
-            wholeTopWidth = topLength + flap;
+            wholeTopWidth = topLength + 2 * flap;
             wholeTopHeight = 2 * flap + topWidth;
             wholeTop = 'width:' + wholeTopWidth + 'px;height:' + wholeTopHeight + 'px;';
             topInnerWidth = 2 + wholeTopWidth - 2 * flap;
             topInnerHeight = 2 + wholeTopHeight - 2 * flap;
             topInnerOffset = flap - 2;
             topInnerBox = 'left:' + topInnerOffset + 'px;top:' + topInnerOffset + 'px;width:' + topInnerWidth + 'px;height:' + topInnerHeight + 'px;';
-//            flapOffsetCalc = flap + 19;
-//            flapOffset = 'top:-' + flapOffsetCalc + 'px';
             topWidthCSSTop = topInnerHeight / 2 - 9;
             topWidthCSSLeft = -1 * (flap + topInnerHeight / 2 + 11);
             topWidthCSS = 'width: ' + topInnerHeight + 'px;' + 'top: ' + topWidthCSSTop + 'px;left:' + topWidthCSSLeft + 'px;';
             topTotalWidthCSSTop = wholeTopHeight / 2 - 9;
-//            topTotalWidthCSSLeft = -1 * (wholeTopHeight / 2 + 11);
             topTotalWidthCSSLeft = -1 * (wholeTopHeight / 2 + 41);
             topTotalWidthCSS = 'width: ' + wholeTopHeight + 'px;' + 'top: ' + topTotalWidthCSSTop + 'px;margin-left:' + topTotalWidthCSSLeft + 'px;';
             boxContainerHeightCalc = topWidth + 250;
@@ -214,6 +211,7 @@ App.BoxBuilder = Ember.Object.extend({
             inToPi = Number(inToPi.toFixed());
             flap = (dims.sides.flap * 1000 * inToPi) / 1000;
             flap = Number(flap.toFixed());
+            corners = 'width:' + flap + 'px;height:' + flap + 'px;';
             sideLength = (dims.sides.width1 * 1000 * inToPi) / 1000;
             sideLength = Number(sideLength.toFixed());
             sideWidth = (dims.sides.width2 * 1000 * inToPi) / 1000;
@@ -232,6 +230,28 @@ App.BoxBuilder = Ember.Object.extend({
             sideHeightBracketsCSSTopOffset = sideHeightBracketsCSSTopOffset.toFixed();
             sideHeightBracketsCSS = 'width:' + sideHeight + 'px;margin-left:-' + sideHeightBracketsCSSLeftOffset + 'px;margin-top:' + sideHeightBracketsCSSTopOffset + 'px;';
 
+            topLength = (dims.lids.length * 1000 * inToPi) / 1000;
+            topLength = Number(topLength.toFixed());
+            topWidth = (dims.lids.width * 1000 * inToPi) / 1000;
+            topWidth = Number(topWidth.toFixed());
+            wholeTopWidth = topLength + 2 * flap;
+            wholeTopHeight = 2 * flap + topWidth;
+            wholeTop = 'width:' + wholeTopWidth + 'px;height:' + wholeTopHeight + 'px;';
+            topInnerWidth = 2 + wholeTopWidth - 2 * flap;
+            topInnerHeight = 2 + wholeTopHeight - 2 * flap;
+            topInnerOffset = flap - 2;
+            topInnerBox = 'left:' + topInnerOffset + 'px;top:' + topInnerOffset + 'px;width:' + topInnerWidth + 'px;height:' + topInnerHeight + 'px;';
+            topWidthCSSTop = topInnerHeight / 2 - 9;
+            topWidthCSSLeft = -1 * (flap + topInnerHeight / 2 + 11);
+            topWidthCSS = 'width: ' + topInnerHeight + 'px;' + 'top: ' + topWidthCSSTop + 'px;left:' + topWidthCSSLeft + 'px;';
+            topTotalWidthCSSTop = wholeTopHeight / 2 - 9;
+            topTotalWidthCSSLeft = -1 * (wholeTopHeight / 2 + 41);
+            topTotalWidthCSS = 'width: ' + wholeTopHeight + 'px;' + 'top: ' + topTotalWidthCSSTop + 'px;margin-left:' + topTotalWidthCSSLeft + 'px;';
+            boxContainerHeightCalc = topWidth + 250;
+            boxContainerHeightCSS = 'height:' + boxContainerHeightCalc + 'px';
+
+            boxCSS.set('corners', corners);
+
             boxCSS.set('sideLength', sideLength);
             boxCSS.set('sideWidth', sideWidth);
             boxCSS.set('sideTotalLength', sideTotalLength);
@@ -246,6 +266,18 @@ App.BoxBuilder = Ember.Object.extend({
             boxCSS.set('sideWidthNote', dims.sides.width1);
             boxCSS.set('sideHeightNote', dims.sides.height);
             boxCSS.set('flapNote', dims.sides.flap);
+
+            boxCSS.set('topLength', topLength);
+            boxCSS.set('topWidth', topWidth);
+            boxCSS.set('wholeTop', wholeTop);
+            boxCSS.set('topInnerBox', topInnerBox);
+            boxCSS.set('totalTopLengthNote', dims.lids.totalLength);
+            boxCSS.set('topLengthNote', dims.lids.length);
+            boxCSS.set('totalTopWidthNote', dims.lids.totalWidth);
+            boxCSS.set('topWidthNote', dims.lids.width);
+            boxCSS.set('topWidthCSS', topWidthCSS);
+            boxCSS.set('topTotalWidthCSS', topTotalWidthCSS);
+            boxCSS.set('boxContainerHeightCSS', boxContainerHeightCSS);
         };
     }
 });
@@ -352,17 +384,6 @@ App.ConstructRoute = Ember.Route.extend({
         boxCSS.set('objectWidth', queryParams.width);
         boxCSS.set('objectHeight', queryParams.height);
         return boxCSS;
-/*        return {
-            skinny : boxCSS.skinny,
-            flat : boxCSS.flat,
-            quad : boxCSS.quad,
-            flap : boxCSS.flap,
-            wholeBottom: boxCSS.wholeBottom,
-            topLength : boxCSS.topLength,
-            topWidth : boxCSS.topWidth,
-            bottomLength : boxCSS.bottomLength,
-            bottomWidth : boxCSS.bottomWidth
-        };*/
     }
 });
 App.ConstructController = Ember.Controller.extend({
