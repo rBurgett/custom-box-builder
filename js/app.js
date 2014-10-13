@@ -149,7 +149,6 @@ App.BoxBuilder = Ember.Object.extend({
             bottomWidthCSSTop = bottomInnerHeight / 2 - 9;
             bottomWidthCSSLeft = -1 * (flap + bottomInnerHeight / 2 + 11);
             bottomWidthCSS = 'width: ' + bottomInnerHeight + 'px;' + 'top: ' + bottomWidthCSSTop + 'px;left:' + bottomWidthCSSLeft + 'px;';
-//            console.log(wholeBottomHeight);
             bottomTotalWidthCSSTop = wholeBottomHeight / 2 - 9;
             bottomTotalWidthCSSLeft = -1 * (wholeBottomHeight / 2 + 41);
             console.log(wholeBottomHeight);
